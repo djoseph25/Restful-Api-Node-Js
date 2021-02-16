@@ -8,11 +8,23 @@ const {
   getOneTour,
   updateTour,
   deleteTour,
+  topSevenTours,
+  getTourStats,
+  monthlyTours,
 } = tourController;
 
-/** **SECTION Routing my Router Route *** */
 const router = express.Router();
 
+/** SECTION CHEAP TOURS ROUTE * */
+router.route('/top-7-Tours').get(topSevenTours, getAllTour);
+
+/** SECTION CHEAP TOURS BY MONTH * */
+router.route('/monthlyTours/:year').get(monthlyTours);
+
+/** **SECTION TOURSTATS Route *** */
+router.route('/getTourStats').get(getTourStats);
+
+/** SECTION TOUR ROUTES  ** */
 router.route('/').get(getAllTour).post(createTour);
 router.route('/:id').get(getOneTour).patch(updateTour).delete(deleteTour);
 

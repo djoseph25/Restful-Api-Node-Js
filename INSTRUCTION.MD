@@ -58,3 +58,9 @@ CREATE A CLUSTER
 CONNECT TO IT -->
 <!-- connect mogonshell to the cluster folder
 NPM i Mongoose -->
+
+<!-- SET UP SCHEMA IMPORT DATA -->
+SET UP VALIDATOR
+
+<!-- DEBUGGING NODE JS  -->
+USING NDB 
