@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = require('./app');
+
+/*  SECTION HANDLE ERROR ITEM IS not defined */
+// console.log(fdf)
+process.on('uncaughtException', (err) => {
+  console.error(err);
+  // NOTE 1 Mean Error 0 mean Success
+  // NOTE We closed the server using this so all curent request can be handle first istead of just process.exit(1) right away
+  process.exit(1);
+});
+
 /** ***SECTION SET UP MY DOTEVN ROUTE */
 dotenv.config({ path: './config.env' });
 // console.log(process.env);
@@ -40,4 +50,13 @@ process.on('unhadleRejection', (err) => {
   server.close(() => {
     process.exit(1);
   });
+});
+
+/*  SECTION HANDLE ERROR ITEM IS not defined */
+// console.log(fdf)
+process.on('uncaughtException', (err) => {
+  console.error(err);
+  // NOTE 1 Mean Error 0 mean Success
+  // NOTE We closed the server using this so all curent request can be handle first istead of just process.exit(1) right away
+  process.exit(1);
 });
