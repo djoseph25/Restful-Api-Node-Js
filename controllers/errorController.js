@@ -1,4 +1,22 @@
-const developementError = function (err, res) {
+const GlobalError = require('../utils/GlobalError');
+
+const handleCastError = (err) => {
+  const message = `Invalid ${err.path} with value of ${err.value}`;
+  return new GlobalError(message, 400);
+};
+
+const handleDuplicateError = (err) => {
+  const message = `You already have a tour name that match ${err.keyValue.name}please use another value`;
+  return new GlobalError(message, 400);
+};
+
+const handleValidatorError = (err) => {
+  // const errors = Object.values(err.errors).map((el) => el.message);
+  const message = `${err.message}`;
+  return new GlobalError(message, 400);
+};
+
+const developementError = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
@@ -7,7 +25,7 @@ const developementError = function (err, res) {
   });
 };
 
-const productionError = function (err, res) {
+const productionError = (err, res) => {
   // NOTE Operational, trusted error: send message to client
   if (err.isOperational) {
     res.status(err.statusCode).json({
@@ -17,7 +35,7 @@ const productionError = function (err, res) {
     // NOTE Programing or other unknow Erro: Don't send Error Details
   } else {
     // 1) console.log Err
-    console.log('🕤', err);
+    console.error('🕤', err);
 
     // 2) send to client
     res.status(500).json({
@@ -32,14 +50,16 @@ module.exports = (err, req, res, next) => {
   err.status = err.status || 'error';
 
   if (process.env.NODE_ENV === 'development') {
-    developementError(req, res, err);
+    developementError(err, res);
   } else if (process.env.NODE_ENV === 'production') {
-
-    productionError(req, res, err);
+    let error = Object.assign(err);
+    if (error.name === 'CastError') {
+      error = handleCastError(error);
+    } else if (error.name === 'MongoError') {
+      error = handleDuplicateError(error);
+    } else if (error.name === 'ValidationError') {
+      error = handleValidatorError(error);
+    }
+    productionError(error, res);
   }
-
-  res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message,
-  });
 };

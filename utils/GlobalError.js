@@ -6,7 +6,7 @@ class GlobalError extends Error {
     this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
 
     // NOTE If operetion error like user not following schmema model.
-    this.Operational = true;
+    this.isOperational = true;
     // NOTE Show us where our Error at;
     Error.captureStackTrace(this, this.constructor);
   }
