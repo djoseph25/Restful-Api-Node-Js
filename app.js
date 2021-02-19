@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/tours', tourRouter);
-app.use('/api/v1/user', userRouter);
+app.use('/api/v1/users', userRouter);
 
 /** ** SECTION HANDLE ALL UNDEFINED ROUTE for GET, POST, DELETE PATH ECT */
 app.all('*', (req, res, next) => {

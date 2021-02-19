@@ -312,7 +312,7 @@ nav .logo.space {
 }
 /* FOOTER Styling */
 .footer {
-	background: var(--mainBlack);
+	background:gray;
 	color: var(--mainWhite);
 	text-align: center;
 	padding-left: 2rem;
