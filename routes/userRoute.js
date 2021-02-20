@@ -4,7 +4,7 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 
-const { signUp } = authController;
+const { signUp, login } = authController;
 
 const {
   getAllUser,
@@ -19,6 +19,7 @@ const router = express.Router();
 /** ***SECTION  Routing to user  Authentication route SENDIND INFORMATION */
 /** ** NOTE WE ONLY NEED TO POST TO THIS ROUTE SO A NEW USER CAN SIGN UP, Login, Reset, Password */
 router.post('/signup', signUp);
+router.post('/login', login);
 
 /** ***SECTION  We need these route in more of rest format such as the system administrator, Updating, delete, create user ECT */
 router.route('/').get(getAllUser).post(createUser);

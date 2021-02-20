@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A Password is required'],
     minlength: [8, 'A passowrd must have at least 8 character'],
+    // NOTE Setting it to false to hide it
+    select: false,
   },
   passwordConfirm: {
     type: String,
@@ -45,6 +47,13 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
+// NOTE Encryt BOth passWord and so I can compare in my authController
+userSchema.methods.correctPassword = function (
+  candidatePassword,
+  userPassword
+) {
+  return bcrypt.compare(candidatePassword, userPassword);
+};
 
 const User = mongoose.model('User', userSchema);
 
