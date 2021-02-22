@@ -1,6 +1,9 @@
 const express = require('express');
 /** ***SECTION IMPORT MY ROUTE HANDLER **** */
 const tourController = require('../controllers/tourController');
+const authController = require('../controllers/authController');
+
+const { protect } = authController;
 
 const {
   getAllTour,
@@ -25,7 +28,7 @@ router.route('/monthlyTours/:year').get(monthlyTours);
 router.route('/getTourStats').get(getTourStats);
 
 /** SECTION TOUR ROUTES  ** */
-router.route('/').get(getAllTour).post(createTour);
+router.route('/').get(protect, getAllTour).post(createTour);
 router.route('/:id').get(getOneTour).patch(updateTour).delete(deleteTour);
 
 module.exports = router;

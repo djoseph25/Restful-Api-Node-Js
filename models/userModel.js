@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema({
       message: 'Password Does not Match',
     },
   },
+  passwordChangedAt: Date,
 });
 
 userSchema.pre('save', async function (next) {
@@ -48,11 +49,25 @@ userSchema.pre('save', async function (next) {
   next();
 });
 // NOTE Encryt BOth passWord and so I can compare in my authController
-userSchema.methods.correctPassword = function (
+userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
-  return bcrypt.compare(candidatePassword, userPassword);
+  // eslint-disable-next-line no-return-await
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+// CREATING ANOTHER INSTANCE OBJECT FOR IF PASSWORD WAS change
+userSchema.methods.changePasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changeTimeStamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    console.log(changeTimeStamp, JWTTimestamp);
+    return JWTTimestamp < changeTimeStamp;
+  }
+  // False Mean not change
+  return false;
 };
 
 const User = mongoose.model('User', userSchema);

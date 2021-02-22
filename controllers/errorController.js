@@ -15,7 +15,15 @@ const handleValidatorError = (err) => {
   const message = `${err.message}`;
   return new GlobalError(message, 400);
 };
-
+const handleWebTokenError = (err) => {
+  const message = `You have input an ${err.message}, Please login again`;
+  return new GlobalError(message, 400);
+};
+const handleExpiredToken = () =>
+  new GlobalError(
+    `Your Password has expired, Please create new password to login`,
+    401
+  );
 const developementError = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -59,6 +67,10 @@ module.exports = (err, req, res, next) => {
       error = handleDuplicateError(error);
     } else if (error.name === 'ValidationError') {
       error = handleValidatorError(error);
+    } else if (err.name === 'JsonWebTokenError') {
+      error = handleWebTokenError(error);
+    } else if (err.name === 'TokenExpiredError') {
+      error = handleExpiredToken();
     }
     productionError(error, res);
   }
