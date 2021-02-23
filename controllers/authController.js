@@ -17,6 +17,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,
+    role: req.body.role,
   });
   /** **SECTION SECURITY USING JSON WEB TOKEN */
   const token = signInToken(newUser._id);
@@ -97,5 +98,17 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = freshUser;
   next();
 });
-
+/** RESTRICT MIDDLEWARE FOR DELETED TOUR BECAUSE I ONLY WANT ADMIN and Lead-guide* */
+exports.restrictTo = (...role) => (req, res, next) => {
+  // Role ['admin', 'lead-guide'].role='user'
+  if (!role.includes(req.user.role)) {
+    return next(
+      new GlobalError(
+        'You do not have access, Only Admin or lead-guide can access this route',
+        403
+      )
+    );
+  }
+  next();
+};
 // lengen 9:40 hong

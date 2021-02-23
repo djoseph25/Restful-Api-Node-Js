@@ -3,7 +3,7 @@ const express = require('express');
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
 
-const { protect } = authController;
+const { protect, restrictTo } = authController;
 
 const {
   getAllTour,
@@ -29,6 +29,10 @@ router.route('/getTourStats').get(getTourStats);
 
 /** SECTION TOUR ROUTES  ** */
 router.route('/').get(protect, getAllTour).post(createTour);
-router.route('/:id').get(getOneTour).patch(updateTour).delete(deleteTour);
+router
+  .route('/:id')
+  .get(getOneTour)
+  .patch(updateTour)
+  .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour);
 
 module.exports = router;
