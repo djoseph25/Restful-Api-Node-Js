@@ -4,7 +4,14 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 
-const { signUp, login, forgotPassword, resetPassword } = authController;
+const {
+  protect,
+  signUp,
+  login,
+  forgotPassword,
+  resetPassword,
+  updatePassword,
+} = authController;
 
 const {
   getAllUser,
@@ -22,6 +29,7 @@ router.post('/signup', signUp);
 router.post('/login', login);
 router.post('/forgotPassword', forgotPassword);
 router.patch('/resetPassword/:token', resetPassword);
+router.patch('/updatePassword', protect, updatePassword);
 
 /** ***SECTION  We need these route in more of rest format such as the system administrator, Updating, delete, create user ECT */
 router.route('/').get(getAllUser).post(createUser);
