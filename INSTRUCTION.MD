@@ -69,3 +69,7 @@ SECTION
 NETWORK SECURiTY SETUP USER SIGN UP 
   <!-- USE JSONWEBTOKEN -->
   <!-- npm i JSONWEBTOKEN -->
+
+  <!-- PASSWEORD RESET -->
+  <!-- INSTALL nodemailer to send email  -->
+  USING MAILTRAP FOR TESTING

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -40,6 +41,8 @@ const userSchema = new mongoose.Schema({
     },
   },
   passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpired: Date,
 });
 
 userSchema.pre('save', async function (next) {
@@ -51,6 +54,13 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   // NOTE delete the confirm password
   this.passwordConfirm = undefined;
+  next();
+});
+// SECTION MIDDLEWARE TO UDATE CHANGE PASSWORD
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password' || this.isNew)) return next();
+  // WE NEED PASS 1000 MS WILL MAKE SURE THE TOKEN IS CREATD AFTER THE PASSWORD CHANGE
+  this.passwordChangedAt = Date.now() - 1000;
   next();
 });
 // NOTE Encryt BOth passWord and so I can compare in my authController
@@ -73,6 +83,20 @@ userSchema.methods.changePasswordAfter = function (JWTTimestamp) {
   }
   // False Mean not change
   return false;
+};
+// CREATING INSTANCE METHOD TO RESET PASSWORD
+userSchema.methods.createPasswordResetToken = function () {
+  // This token this is what we going to send to the user
+  const resetToken = crypto.randomBytes(30).toString('hex');
+
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  // NOTE Reseting password after 10 minute
+  this.passwordResetExpired = Date.now() + 10 * 60 * 1000;
+  console.log({ resetToken }, this.passwordResetToken);
+  return resetToken;
 };
 
 const User = mongoose.model('User', userSchema);
