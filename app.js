@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit')
 
 const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
@@ -12,6 +13,14 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+// SECTION Setting Rate limiter : aLLOWING 100 REQUEST per Hour from the Same IP Address
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too Many request from this IP, please try again in an hour'
+});
+app.use('/api', limiter);
+
 /** *******SECTION Create Middleware ***** */
 // I need this temporaty middleware to for now for my post
 app.use(express.json()); //
