@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
-cost xxs = require('xss-clean');
+const xxs = require('xss-clean');
+const hpp = require('hpp');
 
 const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
@@ -34,7 +35,22 @@ app.use(express.json({ limit: '10kb' })); //
 // DATA SANITAZATION against NOSQL query Injection
 app.use(mongoSanitize());
 // DATA SANITiZATION Against XSS
-app.use(xxs())
+app.use(xxs());
+
+// protect against HTTP Parameter Pollution attacks
+// duration is allowed multiple field duration
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficult',
+      'price',
+    ],
+  })
+);
 
 /** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
 app.use(express.static(`${__dirname}/public`));

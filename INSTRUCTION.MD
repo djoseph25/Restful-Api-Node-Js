@@ -82,5 +82,10 @@ NETWORK SECURiTY SETUP USER SIGN UP
 
   <!--SECTION  VERY IMPORT INSTALL -->
   <!-- npm install express-mongo-sanitize -->
+  <!-- npm i xxs clean -->
  NOTE IT PREVENT NO SQL OPERATOR FROM GETTING ACCESS TO OUR USER 
   <!-- example "email": {"$gt": ""} --> instead of a real email
+
+  <!-- npm i hpp -->
+  Express middleware to protect against HTTP Parameter Pollution attacks
+  <!-- example local/3000 sort = durastion & sort = price --> we not surpse to specific sor twice
