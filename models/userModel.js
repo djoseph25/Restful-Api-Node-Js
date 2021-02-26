@@ -43,6 +43,16 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpired: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
+});
+// NOTE QUERY MIDDLEWARE THAT WILL ONLY RETURN ACTIVE USER THAT IS TRUE
+userSchema.pre(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
+  next();
 });
 
 userSchema.pre('save', async function (next) {

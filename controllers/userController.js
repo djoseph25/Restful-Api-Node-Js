@@ -19,6 +19,7 @@ exports.getAllUser = catchAsync(async (req, res) => {
     },
   });
 });
+/** **SECTION ALLOW USER TO UPDATE CURRENT USER NAME and PASSWORD  */
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error f user Post password Date
   if (req.body.password || req.body.passwordConfirm) {
@@ -41,6 +42,15 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     data: {
       user: updateUser,
     },
+  });
+});
+/** **SECTION ALLOW USER TO DELETE THEIR ACCOUNT BY SETTING ACTIVE TO FALSE */
+exports.deleteMe = catchAsync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user.id, { active: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
   });
 });
 

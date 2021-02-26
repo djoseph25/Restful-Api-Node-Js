@@ -20,6 +20,7 @@ const {
   updateUser,
   deleteUser,
   updateMe,
+  deleteMe,
 } = userController;
 
 /** **SECTION Routing my Router Route *** */
@@ -32,6 +33,7 @@ router.post('/forgotPassword', forgotPassword);
 router.patch('/updateme', protect, updateMe);
 router.patch('/resetPassword/:token', resetPassword);
 router.patch('/updatePassword', protect, updatePassword);
+router.delete('/deleteme', protect, deleteMe);
 
 /** ***SECTION  We need these route in more of rest format such as the system administrator, Updating, delete, create user ECT */
 router.route('/').get(getAllUser).post(createUser);
