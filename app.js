@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const rateLimit = require('express-rate-limit')
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
@@ -8,7 +9,8 @@ const tourRouter = require('./routes/tourRoute');
 const userRouter = require('./routes/userRoute');
 
 const app = express();
-
+// Set security HTTP headers
+app.use(helmet());
 /** ****SECTION SET UP ENVIROMENT  */
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -17,13 +19,15 @@ if (process.env.NODE_ENV === 'development') {
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
-  message: 'Too Many request from this IP, please try again in an hour'
+  message: 'Too Many request from this IP, please try again in an hour',
 });
 app.use('/api', limiter);
 
+// BODY PARSER, READIND data body into req.body
 /** *******SECTION Create Middleware ***** */
 // I need this temporaty middleware to for now for my post
-app.use(express.json()); //
+// Limit file to 10kb
+app.use(express.json({ limit: '10kb' })); //
 /** ****MiddleWare for my post request */
 /** ***Middleware is basically a function that can update the upcoming request data */
 /** ***The data body is added to request req object */

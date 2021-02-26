@@ -73,3 +73,9 @@ NETWORK SECURiTY SETUP USER SIGN UP
   <!-- PASSWEORD RESET -->
   <!-- INSTALL nodemailer to send email  -->
   USING MAILTRAP FOR TESTING
+
+  Limit amount of request with
+  <!-- express-rate-limit -->
+
+  Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
+  <!-- npm i helmet -->
