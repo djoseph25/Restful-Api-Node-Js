@@ -79,3 +79,8 @@ NETWORK SECURiTY SETUP USER SIGN UP
 
   Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
   <!-- npm i helmet -->
+
+  <!--SECTION  VERY IMPORT INSTALL -->
+  <!-- npm install express-mongo-sanitize -->
+ NOTE IT PREVENT NO SQL OPERATOR FROM GETTING ACCESS TO OUR USER 
+  <!-- example "email": {"$gt": ""} --> instead of a real email

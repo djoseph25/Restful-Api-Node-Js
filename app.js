@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+cost xxs = require('xss-clean');
 
 const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
@@ -28,9 +30,12 @@ app.use('/api', limiter);
 // I need this temporaty middleware to for now for my post
 // Limit file to 10kb
 app.use(express.json({ limit: '10kb' })); //
-/** ****MiddleWare for my post request */
-/** ***Middleware is basically a function that can update the upcoming request data */
-/** ***The data body is added to request req object */
+
+// DATA SANITAZATION against NOSQL query Injection
+app.use(mongoSanitize());
+// DATA SANITiZATION Against XSS
+app.use(xxs())
+
 /** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
 app.use(express.static(`${__dirname}/public`));
 
