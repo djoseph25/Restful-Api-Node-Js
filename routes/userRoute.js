@@ -19,6 +19,7 @@ const {
   singleUser,
   updateUser,
   deleteUser,
+  updateMe,
 } = userController;
 
 /** **SECTION Routing my Router Route *** */
@@ -28,6 +29,7 @@ const router = express.Router();
 router.post('/signup', signUp);
 router.post('/login', login);
 router.post('/forgotPassword', forgotPassword);
+router.patch('/updateme', protect, updateMe);
 router.patch('/resetPassword/:token', resetPassword);
 router.patch('/updatePassword', protect, updatePassword);
 
