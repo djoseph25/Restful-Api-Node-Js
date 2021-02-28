@@ -18,9 +18,7 @@ mongoose
   });
 
 /** **SECTION Get ALL THE TOUR **** */
-const allTour = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf8')
-);
+const allTour = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf8'));
 
 const getData = async () => {
   try {
@@ -49,3 +47,5 @@ if (process.argv[2] === '--import') {
 } else if (process.argv[2] === '--delete') {
   deleteAllTour();
 }
+
+// node./dev-data/data/import-dev-data.js --delete

@@ -1,6 +1,8 @@
 // const validator = require('validator');
 const slugify = require('slugify');
 const mongoose = require('mongoose');
+
+// const User = require('./userModel');
 /** *TO CREATE A MONGOOSE MODEL WHICH CAN CREATE, READ, UPDATE, DELETE FIRST WE CREATE A SCHEMA */
 /** **WE USE SCHEMA TO DESCRIBE OUR DATA,  SET DEFAULT VALUE,  VALIDATE DATA */
 const tourSchema = new mongoose.Schema(
@@ -11,7 +13,7 @@ const tourSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       maxlength: [40, 'A tour must have less than 40 character'],
-      minlength: [15, 'A tour must have at least 15 characters'],
+      minlength: [5, 'A tour must have at least 15 characters'],
       // NOTE NPM VALIDATOR
       // validate: [validator.isAlpha, 'A tour name cannot have a number'],
     },
@@ -79,6 +81,33 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    // EMBEDDED DATA TOP
+    startLocation: {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    // EMBEDDED DATA
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          emum: ['Point'],
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    // guides: Array,
+    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   },
   {
     toJSON: { virtuals: true },
@@ -86,31 +115,43 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
-// VIRTUAL PROPERTY
-tourSchema.virtual('durationWeeks').get(function () {
-  // NOTE calculate duration in days
-  return this.duration / 7;
-});
+/** *SECTION Pre middleware run before we query our field */
+// NOTE // /^find/ work for all the find method
 
-/** *SECTION MONGOOSE DOCUMENT MIDDLEWARE only run on save and create */
-tourSchema.pre('save', function (next) {
-  this.slug = slugify(this.name, { lower: true });
+// 1) 🙋 This pre Middleware populate our guide array, Which simply mean fill up the data that match that query ID
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    // NOTE Select: -mean not select
+    select: '-__v -passwordChangedAt',
+  });
   next();
 });
 
-/** **SECTION MONGOOSE QUERY MIDDLEWARE */
-// NOTE // /^find/ work for all the find method
-
+// 2) 👓 This Pre-Middleware return all the tour who secret has not been set to True
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
   next();
 });
 
-// AGGREATION MIDDLEWARE to exlude secret Tour from our statsProp
+// 3) 👓  AGGREATION MIDDLEWARE to exlude secret Tour from our statsProp 👓
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
   next();
 });
+
+// 4) 🥳  This Pre-middleware slugify the name and retrun the lower case
+tourSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+// 35) Virtuals are additional fields for a given model. They do not get save in our database
+tourSchema.virtual('durationWeeks').get(function () {
+  // NOTE calculate duration in days
+  return this.duration / 7;
+});
+
 // CREATE A MODEL 🙋
 const Tour = mongoose.model('Tour', tourSchema);
 
