@@ -36,7 +36,7 @@ exports.getAllTour = catchAsync(async (req, res, next) => {
 // NOTE In Our Tour MODEL we have guides Schema which popluate two ID but in order to get the data I have to populate the guides
 /** ****** 💎  SECTION GET One TOURS  ♊ */
 exports.getOneTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findById(req.params.id);
+  const tour = await Tour.findById(req.params.id).populate('reviews');
   // NOTE always remember return
   if (!tour) {
     return next(new GlobalError(`No tour find with that Id`, 404));

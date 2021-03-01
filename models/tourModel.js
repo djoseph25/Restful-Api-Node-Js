@@ -108,7 +108,9 @@ const tourSchema = new mongoose.Schema(
     ],
     // guides: Array,
     guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+    // reviews: [{ type: mongoose.Schema.ObjectId, ref: 'UserReview' }],
   },
+
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
@@ -152,6 +154,15 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
+// 5)SECTION Virtual Property to get my User reviewS
+// NOTE reviews name our schema ref: to what we want to populate
+// NOTE foreignField refers to tour in our schema and localField link with _ID
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  // NOTE refecenece to the curent model you want to polpulate
+  foreignField: 'tour',
+  localField: '_id',
+});
 // CREATE A MODEL 🙋
 const Tour = mongoose.model('Tour', tourSchema);
 

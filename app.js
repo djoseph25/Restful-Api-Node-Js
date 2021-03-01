@@ -10,6 +10,7 @@ const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoute');
 const userRouter = require('./routes/userRoute');
+const userReview = require('./routes/reviewRoute');
 
 const app = express();
 // Set security HTTP headers
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', userReview);
 
 /** ** SECTION HANDLE ALL UNDEFINED ROUTE for GET, POST, DELETE PATH ECT */
 app.all('*', (req, res, next) => {
