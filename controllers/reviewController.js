@@ -1,5 +1,8 @@
 const Review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
+const factory = require('./CRUDcontroller');
+
+const { deleteOne, updateOne, getOne } = factory;
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   //  /** REVIEW IF There a TOUR ID */ /* THEN WE WANT TO filter only review for that Tour ID */
@@ -31,3 +34,12 @@ exports.createReview = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+/** *SECTION GetOne Review Using our NEW CRUD CONTROLLER */
+exports.getOneReview = getOne(Review);
+
+/** *SECTION DELETe Review Using our NEW CRUD CONTROLLER */
+exports.deleteReview = deleteOne(Review);
+
+/** *SECTION UPDATE Review Using our NEW CRUD CONTROLLER */
+exports.updateReview = updateOne(Review);

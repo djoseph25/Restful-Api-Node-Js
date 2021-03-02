@@ -5,7 +5,13 @@ const authController = require('../controllers/authController');
 
 const { protect, restrictTo } = authController;
 
-const { getAllReviews, createReview } = reviewController;
+const {
+  getAllReviews,
+  createReview,
+  deleteReview,
+  updateReview,
+  getOneReview,
+} = reviewController;
 
 // NOTE MergeParams as long as we get post route it will will all get redirected to our post route from reviews
 const router = express.Router({ mergeParams: true });
@@ -17,5 +23,7 @@ router
   .route('/')
   .get(getAllReviews)
   .post(protect, restrictTo('user'), createReview);
+
+router.route('/:id').get(getOneReview).patch(updateReview).delete(deleteReview);
 
 module.exports = router;
