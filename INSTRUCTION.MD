@@ -89,3 +89,7 @@ NETWORK SECURiTY SETUP USER SIGN UP
   <!-- npm i hpp -->
   Express middleware to protect against HTTP Parameter Pollution attacks
   <!-- example local/3000 sort = durastion & sort = price --> we not surpse to specific sor twice
+
+  <!-- IN PRODUCTION TO CREATE A REVIEW  -->
+  THE USER ID SHOULD COME FROM THE LOGIN ID 
+  THE TOUR ID SHOULD COME FROM THE CURRENT TOUR AUTOMATICALLY

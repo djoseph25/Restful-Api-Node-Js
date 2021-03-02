@@ -2,6 +2,9 @@ const express = require('express');
 /** ***SECTION IMPORT MY ROUTE HANDLER **** */
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
+const reviewController = require('../controllers/reviewController');
+// REVIEW CONTROLLER
+const { createReview } = reviewController;
 
 const { protect, restrictTo } = authController;
 
@@ -26,6 +29,11 @@ router.route('/monthlyTours/:year').get(monthlyTours);
 
 /** **SECTION TOURSTATS Route *** */
 router.route('/getTourStats').get(getTourStats);
+
+/** SECTION Creating REVIEW ROUTES* NEXTED ROUTE INSTEAD OF HAVING TO DIRECTLY PUT OUR TOUR ID */
+router
+  .route('/:tourId/reviews')
+  .post(protect, restrictTo('user'), createReview);
 
 /** SECTION TOUR ROUTES  ** */
 router.route('/').get(protect, getAllTour).post(createTour);
