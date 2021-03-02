@@ -7,7 +7,10 @@ const { protect, restrictTo } = authController;
 
 const { getAllReviews, createReview } = reviewController;
 
-const router = express.Router();
+// NOTE MergeParams as long as we get post route it will will all get redirected to our post route from reviews
+const router = express.Router({ mergeParams: true });
+// POST/tourID/USERID/reviews
+// POST/reviews
 
 /** SECTION TOUR ROUTES  ** */
 router
