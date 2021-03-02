@@ -2,7 +2,6 @@ const express = require('express');
 /** ***SECTION IMPORT MY ROUTE HANDLER **** */
 const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
-const reviewController = require('../controllers/reviewController');
 const reviewRouter = require('./reviewRoute');
 // REVIEW CONTROLLER
 // const { createReview } = reviewController;
