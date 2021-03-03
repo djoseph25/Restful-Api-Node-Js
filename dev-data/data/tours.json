@@ -117,7 +117,7 @@
     },
     "ratingsAverage": 4.5,
     "ratingsQuantity": 6,
-    "images": ["tour-2-1.jpg", "tour-2-2.jpg", "tour-2-3.jpg"],
+    "images": ["tour-3-1.jpg", "tour-3-2.jpg", "tour-3-3.jpg"],
     "startDates": [
       "2022-01-05T10:00:00.000Z",
       "2022-02-12T10:00:00.000Z",
@@ -151,6 +151,55 @@
         "type": "Point",
         "coordinates": [-106.516623, 39.60499],
         "day": 2
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "Dublin, Ireland",
+      "type": "Point",
+      "coordinates": [-73.985141, 40.75894],
+      "address": "26 Great Strand Street Dublin D01 R3P6 Ireland"
+    },
+    "ratingsAverage": 4.6,
+    "ratingsQuantity": 5,
+    "images": ["tour-4-1.jpg", "tour-4-2.jpg", "tour-4-3.jpg"],
+    "startDates": [
+      "2021-03-11T10:00:00.000Z",
+      "2021-05-02T09:00:00.000Z",
+      "2021-06-09T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c295d",
+    "name": "BRITAIN AND IRELAND EXPLORER",
+    "duration": 9,
+    "maxGroupSize": 20,
+    "difficulty": "easy",
+    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a201e2f8fb814b56fa186"],
+    "price": 1197,
+    "summary": "Living the life of Wanderlust in the US' most beatiful cities",
+    "description": "Go behind the scenes on an exploration of all the highlights of Great Britain and Ireland, from the haunt of Shakespeare to Edinburgh's medieval allure, the sweeping Cliffs of Moher to England's celebrated Lake District. Come face-to-face with the legacies of the Vikings, Romans and Normans, witness the sites of great tragedies and triumphs, and keep a keen eye out for an elusive monster hidden in a famous loch!",
+    "imageCover": "tour-4-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2960",
+        "description": "New York",
+        "type": "Point",
+        "coordinates": [-73.967696, 40.781821],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c295f",
+        "description": "Los Angeles",
+        "type": "Point",
+        "coordinates": [-118.324396, 34.097984],
+        "day": 3
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c295e",
+        "description": "San Francisco",
+        "type": "Point",
+        "coordinates": [-122.408865, 37.787825],
+        "day": 5
       }
     ]
   },
@@ -214,55 +263,7 @@
       }
     ]
   },
-  {
-    "startLocation": {
-      "description": "Dublin, Ireland",
-      "type": "Point",
-      "coordinates": [-73.985141, 40.75894],
-      "address": "26 Great Strand Street Dublin D01 R3P6 Ireland"
-    },
-    "ratingsAverage": 4.6,
-    "ratingsQuantity": 5,
-    "images": ["tour-4-1.jpg", "tour-4-2.jpg", "tour-4-3.jpg"],
-    "startDates": [
-      "2021-03-11T10:00:00.000Z",
-      "2021-05-02T09:00:00.000Z",
-      "2021-06-09T09:00:00.000Z"
-    ],
-    "_id": "5c88fa8cf4afda39709c295d",
-    "name": "BRITAIN AND IRELAND EXPLORER",
-    "duration": 9,
-    "maxGroupSize": 20,
-    "difficulty": "easy",
-    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a201e2f8fb814b56fa186"],
-    "price": 1197,
-    "summary": "Living the life of Wanderlust in the US' most beatiful cities",
-    "description": "Go behind the scenes on an exploration of all the highlights of Great Britain and Ireland, from the haunt of Shakespeare to Edinburgh's medieval allure, the sweeping Cliffs of Moher to England's celebrated Lake District. Come face-to-face with the legacies of the Vikings, Romans and Normans, witness the sites of great tragedies and triumphs, and keep a keen eye out for an elusive monster hidden in a famous loch!",
-    "imageCover": "tour-4-cover.jpg",
-    "locations": [
-      {
-        "_id": "5c88fa8cf4afda39709c2960",
-        "description": "New York",
-        "type": "Point",
-        "coordinates": [-73.967696, 40.781821],
-        "day": 1
-      },
-      {
-        "_id": "5c88fa8cf4afda39709c295f",
-        "description": "Los Angeles",
-        "type": "Point",
-        "coordinates": [-118.324396, 34.097984],
-        "day": 3
-      },
-      {
-        "_id": "5c88fa8cf4afda39709c295e",
-        "description": "San Francisco",
-        "type": "Point",
-        "coordinates": [-122.408865, 37.787825],
-        "day": 5
-      }
-    ]
-  },
+  
   {
     "startLocation": {
       "description": "Lima, Peru",
@@ -327,6 +328,55 @@
         "type": "Point",
         "coordinates": [-119.600492, 37.742371],
         "day": 10
+      }
+    ]
+  },
+  {
+    "startLocation": {
+      "description": "California, USA",
+      "type": "Point",
+      "coordinates": [-122.29286, 38.294065],
+      "address": "147-1110, Hashibenkeicho, Nakagyo-ku-shi,Nakagyo-ku Kyoto-shi, Kyoto, Japan"
+    },
+    "ratingsAverage": 4.4,
+    "ratingsQuantity": 7,
+    "images": ["tour-7-1.jpg", "tour-7-2.jpg", "tour-7-3.jpg"],
+    "startDates": [
+      "2021-02-12T10:00:00.000Z",
+      "2021-04-14T09:00:00.000Z",
+      "2021-09-01T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c296c",
+    "name": "JAPAN DISCOVERY",
+    "duration": 5,
+    "maxGroupSize": 18,
+    "difficulty": "easy",
+    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a23412f8fb814b56fa18c"],
+    "price": 3795,
+    "summary": "Visit the Tokyo Metropolitan Observatory, Sensoji Buddhist Temple and Nakamise shopping street at Asakusa and the Meiji Jingu Shinto Shrine",
+    "description": "Experience the many contrasts of Japan, from the modern metropolis of Tokyo to the spectacular beauty of Mt. Fuji and magical Kyoto with its stunning temples and colourful Geisha district. From travelling by bullet train and seeing the cherry blossoms bloom in the springtime, on this 10-day trip you'll gain an understanding of what makes Japan such an unmissable travel destination.",
+    "imageCover": "tour-7-cover.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c296f",
+        "description": "Beringer Vineyards",
+        "type": "Point",
+        "coordinates": [-122.479887, 38.510312],
+        "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c296e",
+        "description": "Clos Pegase Winery & Tasting Room",
+        "type": "Point",
+        "coordinates": [-122.582948, 38.585707],
+        "day": 5
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c296d",
+        "description": "Raymond Vineyard and Cellar",
+        "type": "Point",
+        "coordinates": [-122.434697, 38.482181],
+        "day": 2
       }
     ]
   },
@@ -417,54 +467,6 @@
         "day": 1
       }
     ]
-  },
-  {
-    "startLocation": {
-      "description": "California, USA",
-      "type": "Point",
-      "coordinates": [-122.29286, 38.294065],
-      "address": "147-1110, Hashibenkeicho, Nakagyo-ku-shi,Nakagyo-ku Kyoto-shi, Kyoto, Japan"
-    },
-    "ratingsAverage": 4.4,
-    "ratingsQuantity": 7,
-    "images": ["tour-7-1.jpg", "tour-7-2.jpg", "tour-7-3.jpg"],
-    "startDates": [
-      "2021-02-12T10:00:00.000Z",
-      "2021-04-14T09:00:00.000Z",
-      "2021-09-01T09:00:00.000Z"
-    ],
-    "_id": "5c88fa8cf4afda39709c296c",
-    "name": "JAPAN DISCOVERY",
-    "duration": 5,
-    "maxGroupSize": 18,
-    "difficulty": "easy",
-    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a23412f8fb814b56fa18c"],
-    "price": 3795,
-    "summary": "Visit the Tokyo Metropolitan Observatory, Sensoji Buddhist Temple and Nakamise shopping street at Asakusa and the Meiji Jingu Shinto Shrine",
-    "description": "Experience the many contrasts of Japan, from the modern metropolis of Tokyo to the spectacular beauty of Mt. Fuji and magical Kyoto with its stunning temples and colourful Geisha district. From travelling by bullet train and seeing the cherry blossoms bloom in the springtime, on this 10-day trip you'll gain an understanding of what makes Japan such an unmissable travel destination.",
-    "imageCover": "tour-7-cover.jpg",
-    "locations": [
-      {
-        "_id": "5c88fa8cf4afda39709c296f",
-        "description": "Beringer Vineyards",
-        "type": "Point",
-        "coordinates": [-122.479887, 38.510312],
-        "day": 1
-      },
-      {
-        "_id": "5c88fa8cf4afda39709c296e",
-        "description": "Clos Pegase Winery & Tasting Room",
-        "type": "Point",
-        "coordinates": [-122.582948, 38.585707],
-        "day": 5
-      },
-      {
-        "_id": "5c88fa8cf4afda39709c296d",
-        "description": "Raymond Vineyard and Cellar",
-        "type": "Point",
-        "coordinates": [-122.434697, 38.482181],
-        "day": 2
-      }
-    ]
   }
+  
 ]

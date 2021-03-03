@@ -23,7 +23,8 @@ exports.getAllTour = catchAsync(async (req, res, next) => {
     .fields()
     .pagination();
 
-  const tours = await apiShortcut.query;
+  //REVIEW ADDED Explain 
+  const tours = await apiShortcut.query.explain();
   res.status(200).json({
     status: 'success',
     Total: tours.length,

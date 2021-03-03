@@ -116,7 +116,9 @@ const tourSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
+// REVIEW ADDING OUR MONGOOSE INDEX TO IMPROVE READING SPEED WHEN IT COME TO FILTERING THOUGH OUR TOURS
+// LET SAY WE WANT TO FILTER BY PRICE WE DON"T Want to filter though all becuase it will decrease speed of our application"
+tourSchema.index({ price: 1, ratingsAverage: -1 });
 /** *SECTION Pre middleware run before we query our field */
 // NOTE // /^find/ work for all the find method
 
