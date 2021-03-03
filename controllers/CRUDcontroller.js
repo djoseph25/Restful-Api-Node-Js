@@ -2,9 +2,11 @@ const catchAsync = require('../utils/catchAsync');
 const GlobalError = require('../utils/GlobalError');
 
 /** **REVIEW GETONE WHERE I CAN PASS TO ALL MY CONTROLLER */
-exports.getOne = (Model) =>
+exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id).populate('reviews');
+    let query = Model.findById(req.params.id);
+    if (popOptions) query = query.populate(popOptions);
+    const doc = await query;
     // NOTE always remember return
     if (!doc) {
       return next(new GlobalError(`No ${Model} find with that Id`, 404));
@@ -50,6 +52,18 @@ exports.deleteOne = (Model) =>
       status: 'success',
       data: {
         doc,
+      },
+    });
+  });
+
+/** **REVIEW CREATE MODEL WHERE I CAN PASS TO ALL MY CONTROLLER */
+exports.createOne = (Model) =>
+  catchAsync(async (req, res, next) => {
+    const doc = await Model.create(req.body);
+    res.status(201).json({
+      status: 'success',
+      data: {
+        Model: doc,
       },
     });
   });

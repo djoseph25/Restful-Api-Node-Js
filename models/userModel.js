@@ -55,24 +55,24 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-userSchema.pre('save', async function (next) {
-  // NOTE this function only run if password was modified
-  if (!this.isModified('password')) {
-    return next();
-  }
-  // NOTE Hash the password with cost of 12
-  this.password = await bcrypt.hash(this.password, 12);
-  // NOTE delete the confirm password
-  this.passwordConfirm = undefined;
-  next();
-});
-// SECTION MIDDLEWARE TO UDATE CHANGE PASSWORD
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password' || this.isNew)) return next();
-  // WE NEED PASS 1000 MS WILL MAKE SURE THE TOKEN IS CREATD AFTER THE PASSWORD CHANGE
-  this.passwordChangedAt = Date.now() - 1000;
-  next();
-});
+// userSchema.pre('save', async function (next) {
+//   // NOTE this function only run if password was modified
+//   if (!this.isModified('password')) {
+//     return next();
+//   }
+//   // NOTE Hash the password with cost of 12
+//   this.password = await bcrypt.hash(this.password, 12);
+//   // NOTE delete the confirm password
+//   this.passwordConfirm = undefined;
+//   next();
+// });
+// // SECTION MIDDLEWARE TO UDATE CHANGE PASSWORD
+// userSchema.pre('save', async function (next) {
+//   if (!this.isModified('password' || this.isNew)) return next();
+//   // WE NEED PASS 1000 MS WILL MAKE SURE THE TOKEN IS CREATD AFTER THE PASSWORD CHANGE
+//   this.passwordChangedAt = Date.now() - 1000;
+//   next();
+// });
 // NOTE Encryt BOth passWord and so I can compare in my authController
 userSchema.methods.correctPassword = async function (
   candidatePassword,

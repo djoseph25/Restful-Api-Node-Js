@@ -11,6 +11,7 @@ const {
   forgotPassword,
   resetPassword,
   updatePassword,
+  restrictTo,
 } = authController;
 
 const {
@@ -21,20 +22,29 @@ const {
   deleteUser,
   updateMe,
   deleteMe,
+  getMe,
 } = userController;
 
 /** **SECTION Routing my Router Route *** */
+
 const router = express.Router();
-/** ***SECTION  Routing to user  Authentication route SENDIND INFORMATION */
-/** ** NOTE WE ONLY NEED TO POST TO THIS ROUTE SO A NEW USER CAN SIGN UP, Login, Reset, Password */
+
 router.post('/signup', signUp);
 router.post('/login', login);
 router.post('/forgotPassword', forgotPassword);
-router.patch('/updateme', protect, updateMe);
 router.patch('/resetPassword/:token', resetPassword);
-router.patch('/updatePassword', protect, updatePassword);
-router.delete('/deleteme', protect, deleteMe);
 
+// REVIEW This protect Middleware run before all our below route
+router.use(protect);
+/** ***SECTION  Routing to user  Authentication route SENDIND INFORMATION */
+/** ** NOTE WE ONLY NEED TO POST TO THIS ROUTE SO A NEW USER CAN SIGN UP, Login, Reset, Password */
+router.get('/me', getMe, singleUser);
+router.patch('/updateme', updateMe);
+router.patch('/updatePassword', updatePassword);
+router.delete('/deleteme', deleteMe);
+
+// REVIEW ONLY ADMIN GET ACCESS TO THESE ROUTES
+router.use(restrictTo('admin'));
 /** ***SECTION  We need these route in more of rest format such as the system administrator, Updating, delete, create user ECT */
 router.route('/').get(getAllUser).post(createUser);
 

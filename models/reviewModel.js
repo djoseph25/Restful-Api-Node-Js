@@ -34,14 +34,6 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-// reviewSchema.pre(/^find/, function (next) { 35 11
-//   this.populate({
-//     path: 'tour',
-//     // NOTE Select: -mean not select
-//     select: 'name',
-//   });
-//   next();
-// });
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'user',
@@ -53,7 +45,4 @@ reviewSchema.pre(/^find/, function (next) {
 
 const Review = mongoose.model('Review', reviewSchema);
 
-// Post /tour/tourID/reviews
-// GET /tour/tourID/reviews
-// GET /tour/tourID/reviews/USERID
 module.exports = Review;

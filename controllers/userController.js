@@ -1,6 +1,9 @@
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const GlobalError = require('../utils/GlobalError');
+const factory = require('./CRUDcontroller');
+
+const { getOne, deleteOne, updateOne } = factory;
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -19,6 +22,16 @@ exports.getAllUser = catchAsync(async (req, res) => {
     },
   });
 });
+
+/** SECTION GETME Endpoint */
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
+
+// SECTION GET singleUser
+exports.singleUser = getOne(User);
+
 /** **SECTION ALLOW USER TO UPDATE CURRENT USER NAME and PASSWORD  */
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error f user Post password Date
@@ -57,24 +70,9 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'Invalid Route',
+    message: 'This route is not Define please use/signup Instead',
   });
 };
-exports.singleUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Invalid Route',
-  });
-};
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Invalid Route',
-  });
-};
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Invalid Route',
-  });
-};
+exports.singleUser = getOne(User);
+exports.updateUser = updateOne(User);
+exports.deleteUser = deleteOne(User);

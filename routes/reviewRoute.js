@@ -15,15 +15,16 @@ const {
 
 // NOTE MergeParams as long as we get post route it will will all get redirected to our post route from reviews
 const router = express.Router({ mergeParams: true });
-// POST/tourID/USERID/reviews
-// POST/reviews
 
 /** SECTION TOUR ROUTES  ** */
-router
-  .route('/')
-  .get(getAllReviews)
-  .post(protect, restrictTo('user'), createReview);
+router.use(protect);
+router.route('/').get(getAllReviews).post(restrictTo('user'), createReview);
 
-router.route('/:id').get(getOneReview).patch(updateReview).delete(deleteReview);
+// NOTE ONLY AMDIN AND USER CAN UPDATE DELETE TOUR NOT OUR GUIDE
+router
+  .route('/:id')
+  .get(getOneReview)
+  .patch(restrictTo('user', 'admin'), updateReview)
+  .delete(restrictTo('user', 'admin'), deleteReview);
 
 module.exports = router;
