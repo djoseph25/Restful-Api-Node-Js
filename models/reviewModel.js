@@ -10,8 +10,9 @@ const reviewSchema = new mongoose.Schema(
     rating: {
       type: Number,
       required: [true, 'A rating is Required'],
-      min: 1,
-      max: 5,
+      min: [1, 'A tour must have rating higher than 1'],
+      max: [5, 'A tour cannot have a rating higher than 5'],
+      set: (val) => Math.round(val * 10) / 10, // 4.55555, 45.555/10,  4.5
     },
     createdAt: {
       type: Date,
@@ -43,6 +44,9 @@ reviewSchema.pre(/^find/, function (next) {
   });
   next();
 });
+
+// NOTE Prevent the same User from creating muptiple review per tour
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
 
 // REVIEW CALCULATE total  🙂 ratingsAverage 🥛 ratingsQuantity
 reviewSchema.statics.calcAverageRatings = async function (tourId) {
