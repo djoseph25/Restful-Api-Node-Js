@@ -23,8 +23,9 @@ exports.getAllTour = catchAsync(async (req, res, next) => {
     .fields()
     .pagination();
 
-  //REVIEW ADDED Explain 
-  const tours = await apiShortcut.query.explain();
+  // REVIEW ADDED Explain give me index info related to model index
+  // const tours = await apiShortcut.query.explain();
+  const tours = await apiShortcut.query;
   res.status(200).json({
     status: 'success',
     Total: tours.length,
