@@ -93,3 +93,13 @@ NETWORK SECURiTY SETUP USER SIGN UP
   <!-- IN PRODUCTION TO CREATE A REVIEW  -->
   THE USER ID SHOULD COME FROM THE LOGIN ID 
   THE TOUR ID SHOULD COME FROM THE CURRENT TOUR AUTOMATICALLY
+
+
+
+
+
+  <!-- SECTION FINALY RENDER OUR DOCUMENT  -->
+  <!-- SETP 1 SETUP PUG -->
+  <!-- npm install pug --save -->
+  app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));

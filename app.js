@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -13,7 +14,13 @@ const userRouter = require('./routes/userRoute');
 const userReview = require('./routes/reviewRoute');
 
 const app = express();
-// Set security HTTP headers
+/** REVIEW Set is up pug view engine */
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+/** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
+app.use(express.static(path.join(__dirname, 'public')));
+
+/** SECTION Set security HTTP headers */
 app.use(helmet());
 /** ****SECTION SET UP ENVIROMENT  */
 if (process.env.NODE_ENV === 'development') {
@@ -27,10 +34,7 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// BODY PARSER, READIND data body into req.body
 /** *******SECTION Create Middleware ***** */
-// I need this temporaty middleware to for now for my post
-// Limit file to 10kb
 app.use(express.json({ limit: '10kb' })); //
 
 // DATA SANITAZATION against NOSQL query Injection
@@ -53,15 +57,17 @@ app.use(
   })
 );
 
-/** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
-app.use(express.static(`${__dirname}/public`));
-
 app.use((req, res, next) => {
   req.requesTime = new Date().toISOString();
   // console.log(req.headers)
   next();
 });
 
+app.get('/', (req, res, next) => {
+  res.status(200).render('base');
+});
+
+// ROUTE//
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', userReview);
