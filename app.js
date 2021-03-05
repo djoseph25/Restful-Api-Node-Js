@@ -15,10 +15,35 @@ const userReview = require('./routes/reviewRoute');
 
 const app = express();
 /** REVIEW Set is up pug view engine */
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 /** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
+
+/* REVIEW RENDER FILE */
+app.get('/', (req, res, next) => {
+  res.status(200).render('home', {
+    tour: 'A whole ne World',
+    user: 'David Joseph',
+  });
+});
+app.get('/allTours', (req, res, next) => {
+  res.send('This is the Tour Page');
+});
+app.get('/about', (req, res, next) => {
+  res.send('This is the About Pages');
+});
+app.get('/news', (req, res, next) => {
+  res.send('This is the News Page');
+});
+app.get('/contact', (req, res, next) => {
+  res.send('This is the News Page');
+});
+// 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳
 
 /** SECTION Set security HTTP headers */
 app.use(helmet());
@@ -61,10 +86,6 @@ app.use((req, res, next) => {
   req.requesTime = new Date().toISOString();
   // console.log(req.headers)
   next();
-});
-
-app.get('/', (req, res, next) => {
-  res.status(200).render('base');
 });
 
 // ROUTE//
