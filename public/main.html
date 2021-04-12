@@ -1,452 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/styles.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	</head>
-	<body>
-		<!-- Navigation Bar -->
-		<nav class="navbar">
-			<div class="menu-icon">
-				<span class="fas fa-bars"></span>
-			</div>
-      <div class="logo">Tour_World</div>
-      <form action="#" class="float">
-        	<button type="submit" class="fas fa-search"></button>
-				<input type="search" class="search-data" placeholder="Search" required />
-			
-			</form>
-			<div class="nav-items">
-				<li><a href="tour.html">Tours</a></li>
-				<li><a href="#">Booking</a></li>
-				<li><a href="#">Blogs</a></li>
-				<li>
-					<a href="#"
-						><span><i class="fas fa-user"></i></span> Sign Up</a
-					>
-				</li>
-				<li>
-					<a href="#"
-						><span><i class="fas fa-sign-in-alt"></i></span> Login</a
-					>
-				</li>
-			</div>
-			<div class="search-icon">
-				<span class="fas fa-search"></span>
-			</div>
-			<div class="cancel-icon">
-				<span class="fas fa-times"></span>
-			</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut Icon" type="image/png" href="img/tourworld.png" />
+    <title>Long-Awaited Journey</title>
+    <!--Font awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-			
-		</nav>
-		<div class="hero">
-			<div class="hero-banner">
-				<h1 class="hero-title">Travel far enough, you meet yourself.</h1>
-				<p class="hero-text">
-					“THE PURPOSE OF LIFE IS TO LIVE IT, TO TASTE IT, TO EXPERIENCE TO THE UTMOST, TO REACH OUT
-					EAGERLY AND WITHOUT FEAR FOR NEWER AND RICHER EXPERIENCE.” – ELEANOR ROOSEVELT
-				</p>
-				<a href="#featured" class="btn btn-white scroll-link">explore tours</a>
-			</div>
-		</div>
-		<!-- test Code -->
-		 <!-- In video, this <main> element is wrongly called: <section class="overview">. So in pug template, please use main.main instead of section.overview -->
-    <main class="main">
-      <div class="card-container">
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-1-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The Forest Hiker</span>
-            </h3>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="/" class="logo">
+            <img src="img/cassis.png" alt="" class="logos" />
+          </a>
+          <div class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
           </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Easy 5-day tour</h4>
-            <p class="card__text">
-              Breathtaking hike through the Canadian Banff National Park
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>Banff, Canada</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>April 2021</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>3 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>25 people</span>
-            </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="allTours" class="nav-link">All Tours</a>
+            </li>
+            <li class="nav-item">
+              <a href="about" class="nav-link">About</a>
+            </li>
+            <li class="nav-item"><a href="/news" class="nav-link">News</a></li>
+            <li class="nav-item">
+              <a href="contact" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- SECTION HERO SECTION -->
+    <main>
+      <div class="hero">
+        <div class="container">
+          <div class="main-heading">
+            <h1 class="title">Discover a new World</h1>
+            <h2 class="subtitle">
+              Twenty years from now you will be more disappointed by the things
+              that you didn't do than by the ones you did do. Travel so far away
+              you meet yoursef...”
+            </h2>
           </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$297</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.9</span>
-              <span class="card__footer-text">rating (21)</span>
-            </p>
-            <a href="#" class="btn btn--green btn--small">Details</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-2-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The Sea Explorer</span>
-            </h3>
-          </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Medium-difficult 7-day tour</h4>
-            <p class="card__text">
-              Exploring the jaw-dropping US east coast by foot and by boat
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>Oregon, US</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>June 2021</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>4 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>15 people</span>
-            </div>
-          </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$497</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.8</span>
-              <span class="card__footer-text">rating (12)</span>
-            </p>
-            <a href="#" class="btn btn--green btn--small">Details</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-3-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The Snow Adventurer</span>
-            </h3>
-          </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Difficult 3-day tour</h4>
-            <p class="card__text">
-              Exciting adventure in the snow with snowboarding and skiing
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>Aspen, USA</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>January 2022</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>2 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>10 people</span>
-            </div>
-          </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$697</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.9</span>
-              <span class="card__footer-text">rating (7)</span>
-            </p>
-            <a href="#" class="btn btn--green btn--small">Details</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-4-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The City Wanderer</span>
-            </h3>
-          </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Easy 7-day tour</h4>
-            <p class="card__text">
-              Living the life of Wanderlust in the US' most beatiful cities
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>NYC, USA</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>March 2021</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>3 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>20 people</span>
-            </div>
-          </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$997</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.8</span>
-              <span class="card__footer-text">rating (31)</span>
-            </p>
-            <a href="#" class="btn btn--green btn--small">Details</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-5-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The Park Camper</span>
-            </h3>
-          </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Medium-Difficult 10-day tour</h4>
-            <p class="card__text">
-              Breathing in Nature in America's most spectacular National Parks
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>Las Vegas, USA</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>August 2021</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>4 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>15 people</span>
-            </div>
-          </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$1,497</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.9</span>
-              <span class="card__footer-text">rating (19)</span>
-            </p>
-            <a href="/tour.html" class="btn btn--green btn--small">Details</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__picture">
-              <div class="card__picture-overlay">&nbsp;</div>
-              <img
-                src="img/tour-6-cover.jpg"
-                alt="Tour 1"
-                class="card__picture-img"
-              />
-            </div>
-
-            <h3 class="heading-tertirary">
-              <span>The Sports Lover</span>
-            </h3>
-          </div>
-
-          <div class="card__details">
-            <h4 class="card__sub-heading">Difficult 14-day tour</h4>
-            <p class="card__text">
-              Surfing, skating, parajumping, rock climbing and more, all in one
-              tour
-            </p>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-map-pin"></use>
-              </svg>
-              <span>California, USA</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-calendar"></use>
-              </svg>
-              <span>July 2021</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-flag"></use>
-              </svg>
-              <span>5 stops</span>
-            </div>
-            <div class="card__data">
-              <svg class="card__icon">
-                <use xlink:href="img/icons.svg#icon-user"></use>
-              </svg>
-              <span>8 people</span>
-            </div>
-          </div>
-
-          <div class="card__footer">
-            <p>
-              <span class="card__footer-value">$1,997</span>
-              <span class="card__footer-text">per person</span>
-            </p>
-            <p class="card__ratings">
-              <span class="card__footer-value">4.7</span>
-              <span class="card__footer-text">rating (23)</span>
-            </p>
-            <a href="#" class="btn btn--green btn--small">Details</a>
-          </div>
+          <a href="allTours" class="btn btn-gradient"> Take A Tour.. </a>
         </div>
       </div>
+     
     </main>
+   <ul>
+     
+     <li>Hello World</li>
+   </ul>
 
-		<!-- footer -->
-		<footer class="section footer">
-			<!-- footer links -->
-			<div class="footer-links">
-				<a href="#home" class="footer-link scroll-link">home</a>
-				<a href="#Tour" class="footer-link scroll-link">Tour</a>
-				<a href="#About" class="footer-link scroll-link">About</a>
-				<a href="#featured" class="footer-link scroll-link">Services</a>
-				<a href="#gallery" class="footer-link scroll-link" scroll-link>gallery</a>
-			</div>
-			<!-- footer icons -->
-			<div class="footer-icons">
-				<a href="https://www.twitter.com" target="_blank" class="footer-icon"
-					><i class="fab fa-facebook"></i
-				></a>
-				<a href="https://www.twitter.com" target="_blank" class="footer-icon"
-					><i class="fab fa-twitter"></i
-				></a>
-				<a href="https://www.twitter.com" target="_blank" class="footer-icon"
-					><i class="fab fa-squarespace"></i
-				></a>
-			</div>
-			<p class="copyright">
-				copyright &copy; Backroads travel tours company
-				<span id="date"></span>. all rights reserved
-			</p>
-		</footer>
-		<!-- js Navbar-->
-		<script src="navbar.js"></script>
-	</body>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="grid-container">
+          <div class="grid-item">
+            <img src="img/tourworld.png " class="logo-img" />
+          </div>
+
+          <div class="grid-item inner-grid-container">
+            <div class="grid-item"><a href="">About Us</a></div>
+            <div class="grid-item"><a href="">News</a></div>
+            <div class="grid-item"><a href="">Download App</a></div>
+            <div class="grid-item"><a href="">Blog</a></div>
+            <div class="grid-item"><a href="">Contact us</a></div>
+            <div class="grid-item"><a href="">Guide</a></div>
+            <div class="grid-item"><a href="">Cookie Policy</a></div>
+            <div class="grid-item"><a href="">Jobs</a></div>
+          </div>
+          <div class="grid-item">
+            <div class="social-buttons">
+              <a href=""><i class="fab fa-instagram circle-icon"></i></a>
+              <a href=""><i class="fab fa-facebook circle-icon"></i></a>
+              <a href=""><i class="fab fa-linkedin-in circle-icon"></i></a>
+              <a href=""><i class="fab fa-twitter circle-icon"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <p>
+          Copyright © 2021 | Cassis Ltd | Cassis Travel Services All rights
+          reserved
+        </p>
+      </div>
+    </footer>
+    
+    <script src="./js/index.js"></script>
+  </body>
 </html>

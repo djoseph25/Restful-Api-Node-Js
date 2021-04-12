@@ -7,13 +7,13 @@ const reviewSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A review is Required'],
     },
-    rating: {
-      type: Number,
-      required: [true, 'A rating is Required'],
-      min: [1, 'A tour must have rating higher than 1'],
-      max: [5, 'A tour cannot have a rating higher than 5'],
-      set: (val) => Math.round(val * 10) / 10, // 4.55555, 45.555/10,  4.5
-    },
+    // rating: {
+    //   type: Number,
+    //   required: [true, 'A rating is Required'],
+    //   min: [1, 'A tour must have rating higher than 1'],
+    //   max: [5, 'A tour cannot have a rating higher than 5'],
+    //   set: (val) => Math.round(val * 10) / 10, // 4.55555, 45.555/10,  4.5
+    // },
     createdAt: {
       type: Date,
       default: Date().toLocaleString().split(',')[0],

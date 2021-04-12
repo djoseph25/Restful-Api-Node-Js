@@ -1,4 +1,5 @@
-const path = require('path');
+/* eslint-disable prettier/prettier */
+
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -7,43 +8,19 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xxs = require('xss-clean');
 const hpp = require('hpp');
 
+const app = express()
+
+
+
+
+// REVIEW
+
 const GlobalError = require('./utils/GlobalError');
 const errorController = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoute');
 const userRouter = require('./routes/userRoute');
 const userReview = require('./routes/reviewRoute');
-
-const app = express();
-/** REVIEW Set is up pug view engine */
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-/** ***** SECTION HOW TO SERVE UP OUR STATIC FILE IN ANOTHER WORD SERVE UP OUR HTML FILE */
-app.use(express.static('public'));
-app.use('/css', express.static(path.join(__dirname, 'public/css')));
-app.use('/js', express.static(path.join(__dirname, 'public/js')));
-app.use('/img', express.static(path.join(__dirname, 'public/img')));
-
-/* REVIEW RENDER FILE */
-app.get('/', (req, res, next) => {
-  res.status(200).render('home', {
-    tour: 'A whole ne World',
-    user: 'David Joseph',
-  });
-});
-app.get('/allTours', (req, res, next) => {
-  res.send('This is the Tour Page');
-});
-app.get('/about', (req, res, next) => {
-  res.send('This is the About Pages');
-});
-app.get('/news', (req, res, next) => {
-  res.send('This is the News Page');
-});
-app.get('/contact', (req, res, next) => {
-  res.send('This is the News Page');
-});
-// 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳 🙋 🥳
+// eslint-disable-next-line prettier/prettier
 
 /** SECTION Set security HTTP headers */
 app.use(helmet());
