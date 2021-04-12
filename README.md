@@ -1,4 +1,4 @@
-Tour Website 
+1.) Tour Website 
 Anyone who want connect to this APi.
 Get All Tours, create tours, delete Tours, Edit tours.
 Include Query for tour duration which Supports get, lte, get and lt operators.
