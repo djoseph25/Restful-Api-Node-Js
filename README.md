@@ -9,4 +9,4 @@
 * Add it special functional to where you can leave a review but you can only leave a review to tours that you have been in.
 * Frameworks: Node.js, Express.JS, 
 * Authorization: Passport.JS, Bcrypt, Session
-* Testing: Mocha,
+* Testing: NDB, POSTMAN
